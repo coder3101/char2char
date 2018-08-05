@@ -110,4 +110,4 @@ Many more other names were generated you can have a look at `new_names.txt` file
 
 *While it may seem the names are not very novel, we accept but it was because we trained for lesser number of epochs. You can always train the model again with higher epochs, and more units will generate really novel texts*
 
-**SPECIAL THANKS TO ROHAN SINGH FOR HIS HARDWORD IN COLLECTING THE DATA**
+**SPECIAL THANKS TO [Rohan](https://github.com/r4rohan) FOR HIS HARDWORK IN COLLECTING THE DATA**
