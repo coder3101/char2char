@@ -18,9 +18,16 @@ import json
 import os.path
 
 import numpy as np
-import tensorflow as tf
-from tensorflow.nn.rnn_cell import (BasicLSTMCell, BasicRNNCell,
+import tensorflow.compat.v1 as tf
+
+tf.disable_v2_behavior()
+
+from tensorflow.compat.v1.nn.rnn_cell import (BasicLSTMCell, BasicRNNCell,
                                     DropoutWrapper, GRUCell, MultiRNNCell)
+
+from tensorflow.python.framework import ops
+
+
 from tqdm import tqdm
 
 from reader import FilePipeline
@@ -73,7 +80,7 @@ class CharToChar():
 
         self.is_training_done = False
 
-        tf.reset_default_graph()
+        ops.reset_default_graph()
         self._build_placeholders()
         self._apply_droput_wrapper()
         self._static_unroll()

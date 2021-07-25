@@ -17,18 +17,21 @@
 import os
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+
+from tensorflow.compat.v1.nn.rnn_cell import LSTMStateTuple
+
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 def rnn_placeholders(state):
     """Convert RNN state tensors to placeholders with the zero state as default."""
-    if isinstance(state, tf.contrib.rnn.LSTMStateTuple):
+    if isinstance(state, LSTMStateTuple):
         c, h = state
         c = tf.placeholder_with_default(c, c.shape, c.op.name)
         h = tf.placeholder_with_default(h, h.shape, h.op.name)
-        return tf.contrib.rnn.LSTMStateTuple(c, h)
+        return LSTMStateTuple(c, h)
     elif isinstance(state, tf.Tensor):
         h = state
         h = tf.placeholder_with_default(h, h.shape, h.op.name)
